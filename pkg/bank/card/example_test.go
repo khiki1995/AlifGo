@@ -135,7 +135,6 @@ func ExamplePaymentSources(){
 	for _, v := range paymentSources {
 		fmt.Println(v.Number)
 	}
-	fmt.Print(PaymentSources(cards))
 
 	//Output: 5058 xxxx xxxx 8888
 
