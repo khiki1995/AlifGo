@@ -114,25 +114,28 @@ func ExampleTotal(){
 
 func ExamplePaymentSources(){
 	cards := []types.Card{
-		{
-			PAN : types.PAN("5058 xxxx xxxx 8888"),
-			Balance: 1_000, 
-			Active: true,
-		},
-		{
-			PAN : types.PAN("5000 xxxx xxxx 8888"),
-			Balance: 2_000, 
-			Active: true,
-		},
-		{
-			PAN : types.PAN("5011 xxxx xxxx 8888"),
-			Balance: 3_000, 
-			Active: false,
-		},
+	{
+		PAN:     "5058 xxxx xxxx 8888",
+		Balance: 10_000_00,
+		Active:  true,
+	},
+	{
+		PAN:     "5058 xxxx xxxx 0000",
+		Balance: -10_000_00,
+		Active:  true,
+	},
+	{
+		PAN:     "5058 xxxx xxxx 1111",
+		Balance: 15_000_00,
+		Active:  false,
+	},
+	}
+	paymentSources := PaymentSources(cards)
+
+	for _, v := range paymentSources {
+		fmt.Println(v.Number)
 	}
 
-	fmt.Print(PaymentSources(cards))
-
-	//Output: [{5058 xxxx xxxx 8888 card 1000} {5000 xxxx xxxx 8888 card 2000}]
+	//Output: 5058 xxxx xxxx 8888
 
 }
